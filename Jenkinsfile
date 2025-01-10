@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKERHUB_USERNAME = 'emnaellouze123487'  // Replace with your Docker Hub username
-        DOCKERHUB_PASSWORD = credentials('ssh-credentials-ci')  // Correct credential ID for Docker Hub password
+        DOCKERHUB_PASSWORD = credentials('DockerHubPassword')  // Correct credential ID for Docker Hub password
         VM2_USER = 'recette'           // Replace with VM2 SSH user
         VM2_IP = '192.168.43.207'     // Replace with VM2 IP address
         VM2_APP_PATH = '~/app'        // Directory on VM2 to deploy
