@@ -52,7 +52,7 @@ services:
 
 networks:
   mynetwork:
-    driver: bridge  # Use a bridge network for communication between containers
+    driver:   # Use a bridge network for communication between containers
 
 volumes:
   db_data:  # Define a named volume for MySQL data persistence
