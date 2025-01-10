@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_USERNAME = 'yasinbk'  // Replace with your Docker Hub username
+        DOCKERHUB_USERNAME = 'emnaellouze123487'  // Replace with your Docker Hub username
         DOCKERHUB_PASSWORD = credentials('dockerhub-credentials')  // Correct credential ID for Docker Hub password
         VM2_USER = 'vagrant'           // Replace with VM2 SSH user
         VM2_IP = '192.168.217.203'     // Replace with VM2 IP address
