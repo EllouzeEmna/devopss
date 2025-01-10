@@ -3,9 +3,9 @@ pipeline {
 
     environment {
         DOCKERHUB_USERNAME = 'emnaellouze123487'  // Replace with your Docker Hub username
-        DOCKERHUB_PASSWORD = credentials('dockerhub-credentials')  // Correct credential ID for Docker Hub password
-        VM2_USER = 'vagrant'           // Replace with VM2 SSH user
-        VM2_IP = '192.168.217.203'     // Replace with VM2 IP address
+        DOCKERHUB_PASSWORD = credentials('ssh-credentials-ci')  // Correct credential ID for Docker Hub password
+        VM2_USER = 'recettet'           // Replace with VM2 SSH user
+        VM2_IP = '192.168.43.207'     // Replace with VM2 IP address
         VM2_APP_PATH = '~/app'        // Directory on VM2 to deploy
         DOCKER_CLI_EXPERIMENTAL = "enabled"
     }
@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git url: 'https://github.com/Yass-Bak/Bank-Automation.git', branch: 'main'
+                git url: 'https://github.com/EllouzeEmna/devopss.git', branch: 'main'
             }
         }
 
@@ -45,7 +45,7 @@ pipeline {
 
         stage('Deploy on VM2') {
             steps {
-                sshagent(['vm2-ssh-credentials']) {
+                sshagent(['ssh-credentials-ci']) {
                     sh '''
                     ssh $VM2_USER@$VM2_IP "mkdir -p $VM2_APP_PATH"
                     scp docker-compose.yml $VM2_USER@$VM2_IP:$VM2_APP_PATH/
