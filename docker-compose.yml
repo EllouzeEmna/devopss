@@ -43,7 +43,7 @@ services:
       timeout: 10s
       retries: 10
     ports:
-      - "3306:3306"  # Expose port 3306 on the host, mapped to port 3306 in the container
+      - "3307:3306"  # Expose port 3306 on the host, mapped to port 3306 in the container
     networks:
       - mynetwork
     volumes:
