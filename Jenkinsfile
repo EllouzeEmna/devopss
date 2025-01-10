@@ -33,15 +33,16 @@ pipeline {
             }
         }
 
+
         stage('Push Docker Images to Docker Hub') {
             steps {
-                script {
-                    docker.withRegistry('https://index.docker.io/v1/', 'DockerHubPassword') {
-                        sh 'docker-compose push'
-                    }
+                withCredentials([string(credentialsId: 'DockerHubPassword', variable: 'DockerHubPassword')]) {
+                    sh 'docker login -u lightjarvis -p ${DockerHubPassword}'
+                    sh 'docker push lightjarvis/angular-app:${DOCKER_TAG}'
                 }
             }
         }
+
 
         stage('Deploy on VM2') {
             steps {
