@@ -13,6 +13,7 @@ services:
       - db
 
   backend:
+    image: emnaellouze123487/bank-automation_backend:latest
     build:
       context: ./backend
       dockerfile: Dockerfile
